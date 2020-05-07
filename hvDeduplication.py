@@ -39,7 +39,7 @@ for gene in hvg:
     print("Picard mark duplicates....")
     os.system(condaDir+"/bin/picard MarkDuplicates I=rg_added_sorted.bam O=dedupped.bam  CREATE_INDEX=true VALIDATION_STRINGENCY=SILENT M=output.metrics >null 2>&1")
     print("Discarding reads with duplicates....")
-    os.system(condaDir+"/bin/samtools view -h -F 1024 dedupped.bam > alignment_removedDup.bam")
+    os.system(condaDir+"/bin/samtools view -h -b -F 1024 dedupped.bam > alignment_removedDup.bam")
     #print("Number of reads before deduplication:")
     os.system(condaDir+"/bin/samtools view alignment_removedDup.bam | wc -l >readCount")
     infile = open("readCount")
