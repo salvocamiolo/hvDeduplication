@@ -47,7 +47,7 @@ for gene in hvg:
     infile.close()
     print(gene,beforeDedupReads,afterDedupReads)
     print("Extracting reads....")
-    os.system(condaDir+"/bin/bam2fastq "+gene+"_dedup#.fq alignment_removedDup.bam  >null 2>&1")
+    os.system(condaDir+"/bin/bam2fastq -o "+gene+"_dedup#.fq alignment_removedDup.bam  >null 2>&1")
 
 print("Concatenating reads from first fastq file")
 os.system("cat *dedup_1.fastq > all_Dedup_1.fastq")
